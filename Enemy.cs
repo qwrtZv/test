@@ -1,29 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+ 
 public class Enemy : MonoBehaviour
 {
-    //Скорость движения врага
+    //РЎРєРѕСЂРѕСЃС‚СЊ РґРІРёР¶РµРЅРёСЏ РІСЂР°РіР°
     public float speed;
-
-    //Цель, к которой движется враг
+ 
+    //Р¦РµР»СЊ, Рє РєРѕС‚РѕСЂРѕР№ РґРІРёР¶РµС‚СЃСЏ РІСЂР°Рі
     public Transform target;
-
-    //Очки урона от атаки врагом игрока
+ 
+    //РћС‡РєРё СѓСЂРѕРЅР° РѕС‚ Р°С‚Р°РєРё РІСЂР°РіРѕРј РёРіСЂРѕРєР°
     public int playerDamage = 2;
-
-
+ 
+ 
     void Update()
     {
-        //Меняет каждый кадр позицию NPC на новую
+        //РњРµРЅСЏРµС‚ РєР°Р¶РґС‹Р№ РєР°РґСЂ РїРѕР·РёС†РёСЋ NPC РЅР° РЅРѕРІСѓСЋ
         transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-
-        //Разворачивает каждый кадр NPC лицом к цели
+ 
+        //Р Р°Р·РІРѕСЂР°С‡РёРІР°РµС‚ РєР°Р¶РґС‹Р№ РєР°РґСЂ NPC Р»РёС†РѕРј Рє С†РµР»Рё
         transform.LookAt(target.position);
     }
-
-    //При столкновении врага с игроком второму наносится урон
+ 
+    //РџСЂРё СЃС‚РѕР»РєРЅРѕРІРµРЅРёРё РІСЂР°РіР° СЃ РёРіСЂРѕРєРѕРј РІС‚РѕСЂРѕРјСѓ РЅР°РЅРѕСЃРёС‚СЃСЏ СѓСЂРѕРЅ
     private void OnTriggerEnter(Collider other)
     {
         Player player = other.GetComponent<Player>();
